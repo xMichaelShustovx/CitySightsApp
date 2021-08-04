@@ -16,33 +16,36 @@ struct HomeView: View {
         
         if model.restaurants.count != 0 || model.sights.count != 0 {
             
-            if !isMapShowing {
+            NavigationView {
                 
-                VStack(alignment: .leading) {
+                if !isMapShowing {
                     
-                    HStack {
+                    VStack(alignment: .leading) {
                         
-                        Image(systemName: "location")
-                        Text("Lytkarino")
-                        Spacer()
-                        Text("Switch to map view")
+                        HStack {
+                            
+                            Image(systemName: "location")
+                            Text("Lytkarino")
+                            Spacer()
+                            Text("Switch to map view")
+                            
+                        }
+                        
+                        Divider()
+                        
+                        BusinessList()
                         
                     }
-                    
-                    Divider()
-                    
-                    BusinessList()
+                    .padding([.horizontal, .top])
+                    .navigationBarHidden(true)
                     
                 }
-                .padding([.horizontal, .top])
-                
+                else {
+                    
+                    // Show map
+                    
+                }
             }
-            else {
-                
-                
-                
-            }
-            
         }
         else {
             ProgressView()
