@@ -11,9 +11,7 @@ import Foundation
 class BusinessSearch: Decodable {
     
     var businesses = [Business]()
-    
     var total = 0
-    
     var region = Region()
     
 }
