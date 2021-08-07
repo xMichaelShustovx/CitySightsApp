@@ -45,13 +45,37 @@ struct HomeView: View {
                 }
                 else {
                     
-                    // Show map
-                    BusinessMap(selectedBusiness: $selectedBusiness)
-                        .ignoresSafeArea()
-                        .sheet(item: $selectedBusiness) { business in
-                            BusinessDetail(business: business)
+                    ZStack (alignment: .top) {
+                        
+                        // Show map
+                        BusinessMap(selectedBusiness: $selectedBusiness)
+                            .ignoresSafeArea()
+                            .sheet(item: $selectedBusiness) { business in
+                                BusinessDetail(business: business)
+                            }
+                        
+                        // Rectangle overlay
+                        ZStack {
+                         
+                            Rectangle()
+                                .foregroundColor(.white)
+                                .cornerRadius(5)
+                                .frame(height: 48)
+                            
+                            HStack {
+                                
+                                Image(systemName: "location")
+                                Text("Lytkarino")
+                                Spacer()
+                                Button("Switch to list view") {
+                                    self.isMapShowing = false
+                                }
+                                
+                            }
+                            .padding()
                         }
-                    
+                        .padding()
+                    }
                 }
             }
         }
