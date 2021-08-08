@@ -26,7 +26,7 @@ struct HomeView: View {
                         HStack {
                             
                             Image(systemName: "location")
-                            Text("Lytkarino")
+                            Text(model.placemark?.locality ?? "")
                             Spacer()
                             Button("Switch to map view") {
                                 self.isMapShowing = true
@@ -36,8 +36,18 @@ struct HomeView: View {
                         
                         Divider()
                         
-                        BusinessList()
-                        
+                        ZStack (alignment: .top) {
+                            
+                            BusinessList()
+                            
+                            HStack {
+                                
+                                Spacer()
+                                YelpAttribution(link: "https://yelp.ca")
+                                
+                            }
+                            .padding(.trailing, -20)
+                        }
                     }
                     .padding([.horizontal, .top])
                     .navigationBarHidden(true)
@@ -56,7 +66,7 @@ struct HomeView: View {
                         
                         // Rectangle overlay
                         ZStack {
-                         
+                            
                             Rectangle()
                                 .foregroundColor(.white)
                                 .cornerRadius(5)
