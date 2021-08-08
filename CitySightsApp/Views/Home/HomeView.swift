@@ -75,7 +75,7 @@ struct HomeView: View {
                             HStack {
                                 
                                 Image(systemName: "location")
-                                Text("Lytkarino")
+                                Text(model.placemark?.locality ?? "")
                                 Spacer()
                                 Button("Switch to list view") {
                                     self.isMapShowing = false
